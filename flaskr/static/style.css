@@ -1,26 +1,251 @@
-html { font-family: sans-serif; background: #eee; padding: 1rem; }
-body { max-width: 960px; margin: 0 auto; background: white; }
-h1 { font-family: serif; color: #377ba8; margin: 1rem 0; }
-a { color: #377ba8; }
-hr { border: none; border-top: 1px solid lightgray; }
-nav { background: lightgray; display: flex; align-items: center; padding: 0 0.5rem; }
-nav h1 { flex: auto; margin: 0; }
-nav h1 a { text-decoration: none; padding: 0.25rem 0.5rem; }
-nav ul  { display: flex; list-style: none; margin: 0; padding: 0; }
-nav ul li a, nav ul li span, header .action { display: block; padding: 0.5rem; }
-.content { padding: 0 1rem 1rem; }
-.content > header { border-bottom: 1px solid lightgray; display: flex; align-items: flex-end; }
-.content > header h1 { flex: auto; margin: 1rem 0 0.25rem 0; }
-.flash { margin: 1em 0; padding: 1em; background: #cae6f6; border: 1px solid #377ba8; }
-.post > header { display: flex; align-items: flex-end; font-size: 0.85em; }
-.post > header > div:first-of-type { flex: auto; }
-.post > header h1 { font-size: 1.5em; margin-bottom: 0; }
-.post .about { color: slategray; font-style: italic; }
-.post .body { white-space: pre-line; }
-.content:last-child { margin-bottom: 0; }
-.content form { margin: 1em 0; display: flex; flex-direction: column; }
-.content label { font-weight: bold; margin-bottom: 0.5em; }
-.content input, .content textarea { margin-bottom: 1em; }
-.content textarea { min-height: 12em; resize: vertical; }
-input.danger { color: #cc2f2e; }
-input[type=submit] { align-self: start; min-width: 10em; }
+/* Base styles and resets */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    line-height: 1.6;
+    color: #e1e1e1;
+    background-color: #171717;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+  
+  /* Navigation bar */
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 0;
+    margin-bottom: 2rem;
+  }
+  
+  nav h1 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #50a0ff;  /* Brighter blue for better contrast */
+    letter-spacing: 0.5px;
+  }
+  
+  nav ul {
+    display: flex;
+    list-style: none;
+    gap: 1.5rem;
+  }
+  
+  nav ul li {
+    display: inline-block;
+  }
+  
+  nav a {
+    color: #bbbbbb;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color 0.2s ease;
+    font-weight: 500;
+  }
+  
+  nav a:hover {
+    color: #50a0ff;
+  }
+  
+  nav span {
+    color: #999;
+    font-size: 0.95rem;
+  }
+  
+  /* Horizontal rule styling */
+  hr, nav::after {
+    border: 0;
+    height: 1px;
+    background-color: #333;
+    margin: 1.5rem 0;
+    width: 100%;
+  }
+  
+  /* Content section */
+  .content {
+    padding: 1rem 0;
+    width: 100%;
+  }
+  
+  header {
+    margin-bottom: 2rem;
+  }
+  
+  header h1 {
+    font-size: 2rem;
+    font-weight: 500;
+    color: #ffffff;
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Form styles */
+  form {
+    max-width: 600px;
+  }
+  
+  label {
+    display: block;
+    margin: 1.5rem 0 0.5rem;
+    font-size: 0.95rem;
+    color: #bbbbbb;
+    font-weight: 500;
+  }
+  
+  input[type="text"],
+  input[type="password"],
+  textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #333;
+    background-color: #212121; /* Slightly lighter than body background */
+    color: #e1e1e1;
+    border-radius: 3px;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  input[type="text"]:focus,
+  input[type="password"]:focus,
+  textarea:focus {
+    border-color: #50a0ff;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(80, 160, 255, 0.15);
+  }
+  
+  textarea {
+    min-height: 150px;
+    resize: vertical;
+    font-family: inherit;
+    line-height: 1.5;
+  }
+  
+  /* Button styles */
+  input[type="submit"],
+  button,
+  .action-button {
+    background-color: #0e6bc2; /* Darker blue for buttons */
+    color: #ffffff;
+    border: none;
+    padding: 0.7rem 1.5rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    margin-right: 0.75rem;
+    margin-top: 0.5rem;
+    display: inline-block;
+  }
+  
+  input[type="submit"]:hover,
+  button:hover,
+  .action-button:hover {
+    background-color: #1278d1;
+  }
+  
+  /* Delete button styling */
+  .danger-button,
+  button.danger {
+    background-color: #212121;
+    border: 1px solid #444;
+    color: #e1e1e1;
+  }
+  
+  .danger-button:hover,
+  button.danger:hover {
+    background-color: #ae2c2c;
+    border-color: #ae2c2c;
+  }
+  
+  /* Flash messages */
+  .flash {
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    background-color: rgba(80, 160, 255, 0.1);
+    border-left: 4px solid #50a0ff;
+    color: #bbbbbb;
+    border-radius: 2px;
+  }
+  
+  /* Post styles */
+  .post {
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #333;
+  }
+  
+  .post:last-child {
+    border-bottom: none;
+  }
+  
+  .post > header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 1rem;
+  }
+  
+  .post > header h1 {
+    font-size: 1.5rem;
+    margin-bottom: 0;
+  }
+  
+  .post .about {
+    color: #999;
+    font-style: italic;
+    font-size: 0.85rem;
+  }
+  
+  .post .body {
+    white-space: pre-line;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+  }
+  
+  /* Action links */
+  .action {
+    display: inline-block;
+    font-size: 0.9rem;
+    color: #50a0ff;
+    text-decoration: none;
+    margin-right: 1rem;
+  }
+  
+  .action:hover {
+    text-decoration: underline;
+  }
+  
+  /* Page titles */
+  h1 {
+    font-weight: 500;
+    color: #fff;
+  }
+  
+  /* For the username display in nav */
+  .username {
+    color: #888;
+    font-size: 0.95rem;
+  }
+  
+  /* Footer styling if needed */
+  footer {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #333;
+    color: #777;
+    font-size: 0.85rem;
+  }
+  
+  /* Add a bottom border line after form actions */
+  .form-actions {
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #333;
+  }
